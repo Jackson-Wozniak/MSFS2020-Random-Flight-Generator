@@ -34,13 +34,13 @@ function App() {
         alert("Cannot get airport data to create flight");
       });
 
-      fetch("https://raw.githubusercontent.com/Jackson-Wozniak/MSFS2020-Random-Flight-Generator/main/planes.csv")
+    fetch("https://raw.githubusercontent.com/Jackson-Wozniak/MSFS2020-Random-Flight-Generator/main/planes.csv")
       .then(res => res.text())
       .then(v => Papa.parse(v))
       .then(data => {
         data.data.forEach(plane => {
-          //map array index from csv to new Airport object
-          airports.push(new Plane(plane));;
+          //map array index from csv to new plane object
+          planes.push(new Plane(plane));;
         });
         console.log(planes.length);
       })
@@ -90,28 +90,35 @@ function App() {
     return (
       <div className="App">
         <form onSubmit={createFlight} className="flight-form">
-          <select onChange={(e) => flightParameters.maxFlightTime = e.target.value}>
-            <option value="-1">Any Time</option>
-            <option value="1">1 Hour</option>
-            <option value="3">3 Hours</option>
-            <option value="5">5 Hours</option>
-          </select>
-          <select onChange={(e) => flightParameters.continentOfDeparture = e.target.value}>
-            <option value="-1">Any Continent</option>
-            <option value="NA">North America</option>
-            <option value="SA">South America</option>
-            <option value="AF">Africa</option>
-            <option value="AS">Asia</option>
-            <option value="EU">Europe</option>
-            <option value="OC">Oceania</option>
-          </select>
-          <select onChange={(e) => flightParameters.airportSize = e.target.value}>
-            <option value="-1">Any Airport</option>
-            <option value="large_airport">Large Airports</option>
-            <option value="medium_airport">Medium Airports</option>
-            <option value="small_airport">Small Airports</option>
-          </select>
-          <button action="submit">Generate Flight</button>
+          <h2>Choose Your Flight Parameters</h2>
+          <div className="select">
+            <select onChange={(e) => flightParameters.maxFlightTime = e.target.value}>
+              <option value="-1">Any Time</option>
+              <option value="1">1 Hour</option>
+              <option value="3">3 Hours</option>
+              <option value="5">5 Hours</option>
+            </select>
+          </div>
+          <div className="select">
+            <select onChange={(e) => flightParameters.continentOfDeparture = e.target.value}>
+              <option value="-1">Any Continent</option>
+              <option value="NA">North America</option>
+              <option value="SA">South America</option>
+              <option value="AF">Africa</option>
+              <option value="AS">Asia</option>
+              <option value="EU">Europe</option>
+              <option value="OC">Oceania</option>
+            </select>
+          </div>
+          <div className="select">
+            <select onChange={(e) => flightParameters.airportSize = e.target.value}>
+              <option value="-1">Any Airport</option>
+              <option value="large_airport">Large Airports</option>
+              <option value="medium_airport">Medium Airports</option>
+              <option value="small_airport">Small Airports</option>
+            </select>
+          </div>
+          <button action="submit" className="submit-flight">Generate Flight</button>
         </form>
       </div>
     );

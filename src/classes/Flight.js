@@ -100,11 +100,11 @@ export class Plane {
     speedInKnots;
     rangeInMiles;
     airplaneType;
-    
+
     constructor(plane){
-        this.name = plane.name;
-        this.speedInKnots = plane.speedInKnots;
-        this.rangeInMiles = plane.rangeInMiles;
-        this.airplaneType = plane.airplaneType;
+        this.name = plane[0];
+        this.speedInKnots = plane[1];
+        this.rangeInMiles = plane[2];
+        this.airplaneType = plane[4];
     }
 }
