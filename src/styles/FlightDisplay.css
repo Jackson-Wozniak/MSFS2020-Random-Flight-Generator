@@ -26,10 +26,10 @@
     font-family: 'Century Gothic', sans-serif;
     font-weight: bold;
     font-size: large;
-    background: #EEE;
-    backdrop-filter: blur(3px);
-    opacity: .9;
-    box-shadow: 1px 1px 1px rgb(31, 31, 31);
+    color: rgb(60, 58, 58);
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
 }
 
 .flight-display {

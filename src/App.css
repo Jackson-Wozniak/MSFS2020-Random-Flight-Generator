@@ -4,7 +4,17 @@ body, .App {
   margin : 0;
   min-height : 100vh;
   min-width : 100vh;
-  background-color: #e5e5f7;
+  /* background: rgb(15,32,39);
+  background: linear-gradient(113deg, rgba(15,32,39,1) 0%, rgba(32,58,67,1) 46%, rgba(44,83,100,1) 100%); */
+  /* background: #0f0c29;
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);  */
+  background: url("./images/background_2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 
 .App {
@@ -18,12 +28,13 @@ body, .App {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(81, 81, 214);
   font-family: 'Open Sans', sans-serif;
-  color: #fff;
+  color: rgb(14, 14, 14);
   padding : 0px 30px 10px 30px;
-  box-shadow: 1px 1px 1px 1px #2b2e2e;
   border-radius: 5px;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
 }
 
 select {
@@ -34,6 +45,9 @@ select {
   outline:0;
   box-shadow:none;
   border:0!important;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
   background: #5c6664;
   background-image: none;
   flex: 1;

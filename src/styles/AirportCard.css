@@ -1,10 +1,10 @@
 .card {
-    min-width : 20%;
-    max-width: 33%;
+    min-width : 28%;
+    max-width: 38%;
     min-height : 50%;
     border : 2px solid black;
     border-radius: 5px;
-    padding : 0px 10px 10px 10px;
+    padding : 0px 20px 10px 20px;
     margin : 20px;
     display: flex;
     flex-direction: column;
@@ -12,27 +12,41 @@
     align-items: center;
     text-align: center;
     transition: 1s;
-    background: #EEE;
-    backdrop-filter: blur(3px);
-    opacity: .9;
-    box-shadow: 2px 2px 2px rgb(31, 31, 31);
+    color: #fff;
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
 }
+
+/* .card {
+    background: rgba(212, 212, 212, 0.8);
+  }
+  
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .card {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+  } */
 
 .card:hover {
     min-height : 55%;
-    min-width : 22%;
-    max-width : 35%;
+    min-width : 30%;
+    max-width : 40%;
 }
 
 .card hr {
     width : 95%;
     height : 1px;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(0, 0, 0);
     margin-top : 5px;
+    border : none;
 }
 
 .card label, h2 {
-    font-weight: bold;
+    color : rgb(255, 255, 255);
+    text-shadow: -4px 8px 11px 0px rgba(0,0,0, 1);
+    font-weight: normal;
     font-family: 'Century Gothic', sans-serif;
 }
 
@@ -41,5 +55,7 @@
 }
 
 .card p {
-    font-weight: normal;
+    font-weight: bold;
+    color : rgb(150, 142, 240);
+    text-shadow: -4px 8px 11px 0px rgb(255, 255, 255);
 }
