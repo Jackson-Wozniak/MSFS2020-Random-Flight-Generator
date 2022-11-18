@@ -19,7 +19,7 @@ function App() {
       createFlight();
       return;
     }
-    fetch("https://raw.githubusercontent.com/Jackson-Wozniak/MSFS2020-Career-Mode/main/Text_Files/airports_full.csv")
+    fetch("https://raw.githubusercontent.com/Jackson-Wozniak/MSFS2020-Random-Flight-Generator/main/airports.csv")
       .then(res => res.text())
       .then(v => Papa.parse(v))
       .then(data => {

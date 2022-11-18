@@ -38,7 +38,7 @@ export class Flight{
         let flightMinutes = this.time * 60;
         let hours = flightMinutes / 60;
         let minutes = flightMinutes % 60;
-        return Math.floor(hours) + ":" + (Math.round(minutes) < 10 ? "0" + Math.round(minutes) : Math.round(minutes));
+        return Math.floor(hours) + ":" + (Math.round(minutes) < 10 ? "0" + Math.round(minutes) : Math.round(minutes)) + ":00";
     }
 }
 
