@@ -1,3 +1,21 @@
+export class FlightParameters{
+    maxFlightTime;
+    maxFlightDistance;
+    continentOfDeparture;
+    airportSize;
+
+    constructor(maxFlightTime, maxFlightDistance, continentOfDeparture, airportSize){
+        this.maxFlightTime = maxFlightTime;
+        this.maxFlightDistance = maxFlightDistance;
+        this.continentOfDeparture = continentOfDeparture;
+        this.airportSize = airportSize;
+    }
+
+    airportChoicesAreNotAny(){
+        return this.continentOfDeparture !== -1 || this.airportSize !== -1 ? true : false;
+    }
+}
+
 export class Flight{
     departure;
     destination;
@@ -39,6 +57,16 @@ export class Flight{
         let hours = flightMinutes / 60;
         let minutes = flightMinutes % 60;
         return Math.floor(hours) + ":" + (Math.round(minutes) < 10 ? "0" + Math.round(minutes) : Math.round(minutes)) + ":00";
+    }
+
+    validateFlight(flightParameters){
+        if(flightParameters.maxFlightTime < this.time && flightParameters.maxFlightTime !== -1){
+            return false;
+        }
+        if(flightParameters.maxFlightDistance < this.distance && flightParameters.maxFlightDistance !== -1){
+            return false;
+        }
+        return true;
     }
 }
 
