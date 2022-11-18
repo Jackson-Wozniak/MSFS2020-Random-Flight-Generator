@@ -19,13 +19,15 @@ export class FlightParameters{
 export class Flight{
     departure;
     destination;
+    plane;
     distance;
     time;
     formattedTime;
 
-    constructor(airport1, airport2){
+    constructor(airport1, airport2, plane){
       this.departure = airport1;
       this.destination = airport2;
+      this.plane = plane;
       this.distance = this.calculateDistance();
       this.time = this.calculateFlightHours();
       this.formattedTime = this.convertHoursToHHmm();
@@ -48,7 +50,7 @@ export class Flight{
     }
 
     calculateFlightHours(){
-        let planeSpeedInMph = 150 * 1.15077945;
+        let planeSpeedInMph = this.plane.speedInKnots * 1.15077945;
         return Math.round((this.distance/planeSpeedInMph) * 100.00) / 100.00;
     }
     
@@ -60,6 +62,9 @@ export class Flight{
     }
 
     validateFlight(flightParameters){
+        if(this.distance > this.plane.rangeInMiles){
+            return false;
+        }
         if(flightParameters.maxFlightTime < this.time && flightParameters.maxFlightTime !== -1){
             return false;
         }
@@ -87,5 +92,19 @@ export class Airport{
       this.longitude = data[4];
       this.continent = data[5];
       this.country = data[6];
+    }
+}
+
+export class Plane {
+    name;
+    speedInKnots;
+    rangeInMiles;
+    airplaneType;
+    
+    constructor(plane){
+        this.name = plane.name;
+        this.speedInKnots = plane.speedInKnots;
+        this.rangeInMiles = plane.rangeInMiles;
+        this.airplaneType = plane.airplaneType;
     }
 }

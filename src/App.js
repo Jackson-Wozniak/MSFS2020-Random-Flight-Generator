@@ -1,20 +1,23 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Papa from 'papaparse';
 import FlightDisplay from './components/FlightDisplay';
-import { Flight, Airport, FlightParameters } from './classes/Flight';
+import { Flight, Airport, FlightParameters, Plane } from './classes/Flight';
 
 function App() {
+
+  const airports = [];
+  const planes = [];
+
+  useEffect(() => {
+    readTextFile();
+  }, []);
 
   const [flight, setFlight] = useState(null);
   const [flightParameters, setFlightParameters] = useState(new FlightParameters(-1, -1, -1, -1));
 
-  const airports = [];
-
-  const readTextFile = (e) => {
-    e.preventDefault();
+  const readTextFile = () => {
     if(airports.length > 1){
-      createFlight();
       return;
     }
     fetch("https://raw.githubusercontent.com/Jackson-Wozniak/MSFS2020-Random-Flight-Generator/main/airports.csv")
@@ -25,18 +28,39 @@ function App() {
           //map array index from csv to new Airport object
           airports.push(new Airport(airport));;
         });
-        createFlight();
+        console.log(airports.length);
+      })
+      .catch(() => {
+        alert("Cannot get airport data to create flight");
+      });
+
+      fetch("https://raw.githubusercontent.com/Jackson-Wozniak/MSFS2020-Random-Flight-Generator/main/planes.csv")
+      .then(res => res.text())
+      .then(v => Papa.parse(v))
+      .then(data => {
+        data.data.forEach(plane => {
+          //map array index from csv to new Airport object
+          airports.push(new Plane(plane));;
+        });
+        console.log(planes.length);
+      })
+      .catch(() => {
+        alert("Cannot get plane data to create flight");
       });
   }
 
-  function createFlight(){
+  const createFlight = (e) => {
+    e.preventDefault();
     //if continent or airport size in flight parameters are not any (-1), filter airports 
     //to only include those that follow flight parameters
+    if(airports.size <= 1){
+      readTextFile();
+    }
     let airportArr = flightParameters.airportChoicesAreNotAny() ? filteredAirports() : airports;
-    console.log(airportArr);
     let airport1 = airportArr[Math.floor(Math.random()*airportArr.length)];
     let airport2 = airportArr[Math.floor(Math.random()*airportArr.length)];
-    let flight = new Flight(airport1, airport2);
+    let plane = planes[Math.floor(Math.random()*planes.length)];
+    let flight = new Flight(airport1, airport2, plane);
     while(true){
       if(flight.validateFlight(flightParameters)){
         setFlight(flight);
@@ -44,7 +68,7 @@ function App() {
       }
       airport1 = airportArr[Math.floor(Math.random()*airportArr.length)];
       airport2 = airportArr[Math.floor(Math.random()*airportArr.length)];
-      flight = new Flight(airport1, airport2);
+      flight = new Flight(airport1, airport2, plane);
     }
   }
 
@@ -65,7 +89,7 @@ function App() {
   if(flight == null){
     return (
       <div className="App">
-        <form onSubmit={readTextFile}>
+        <form onSubmit={createFlight} className="flight-form">
           <select onChange={(e) => flightParameters.maxFlightTime = e.target.value}>
             <option value="-1">Any Time</option>
             <option value="1">1 Hour</option>
