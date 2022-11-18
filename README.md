@@ -1,9 +1,3 @@
-![Commits](https://img.shields.io/github/commit-activity/m/Jackson-Wozniak/Random-Flight-Generator?style=for-the-badge)
-![Total Lines](https://img.shields.io/tokei/lines/github/Jackson-Wozniak/Random-Flight-Generator?style=for-the-badge)
-![Languages](https://img.shields.io/github/languages/count/Jackson-Wozniak/Random-Flight-Generator?color=brightgreen&style=for-the-badge)
-![License](https://img.shields.io/github/license/Jackson-Wozniak/Random-Flight-Generator?style=for-the-badge)
-![Java](https://img.shields.io/github/languages/top/Jackson-Wozniak/Random-Flight-Generator?color=brightgreen&style=for-the-badge)
-
 <div align="center">
   <a href="">
     <img src="https://user-images.githubusercontent.com/105665813/195965037-b0ae254a-6fe7-459d-be91-b36ac37e1865.png" alt="Logo" width="600" height="320">
