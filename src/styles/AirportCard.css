@@ -1,0 +1,30 @@
+.card {
+    min-width : 20%;
+    max-width: 33%;
+    min-height : 50%;
+    border : 1px solid black;
+    border-radius: 5px;
+    padding : 0px 10px 10px 10px;
+    margin : 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 1s;
+}
+
+.card:hover {
+    min-height : 55%;
+    min-width : 22%;
+    max-width : 35%;
+}
+
+.card label, h2 {
+    font-weight: bold;
+    font-family: 'Century Gothic', sans-serif;
+}
+
+.card p {
+    font-weight: normal;
+}
