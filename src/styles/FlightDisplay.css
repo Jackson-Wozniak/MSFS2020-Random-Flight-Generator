@@ -1,8 +1,41 @@
-.flight-display {
+.flight-window {
     height : 100vh;
     min-width : 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: gainsboro;
+}
+
+.utils {
+    height : 10%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.utils .reload-button {
+    border : 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding : 10px;
+    font-family: 'Century Gothic', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    background: #EEE;
+    backdrop-filter: blur(3px);
+    opacity: .9;
+    box-shadow: 1px 1px 1px rgb(31, 31, 31);
+}
+
+.flight-display {
+    min-height : 90%;
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

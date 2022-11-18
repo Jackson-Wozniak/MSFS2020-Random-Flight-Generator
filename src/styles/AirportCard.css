@@ -2,7 +2,7 @@
     min-width : 20%;
     max-width: 33%;
     min-height : 50%;
-    border : 1px solid black;
+    border : 2px solid black;
     border-radius: 5px;
     padding : 0px 10px 10px 10px;
     margin : 20px;
@@ -12,6 +12,10 @@
     align-items: center;
     text-align: center;
     transition: 1s;
+    background: #EEE;
+    backdrop-filter: blur(3px);
+    opacity: .9;
+    box-shadow: 2px 2px 2px rgb(31, 31, 31);
 }
 
 .card:hover {
@@ -20,9 +24,20 @@
     max-width : 35%;
 }
 
+.card hr {
+    width : 95%;
+    height : 1px;
+    background-color: rgb(31, 31, 31);
+    margin-top : 5px;
+}
+
 .card label, h2 {
     font-weight: bold;
     font-family: 'Century Gothic', sans-serif;
+}
+
+.card h2 {
+    margin-bottom: 5px;
 }
 
 .card p {

@@ -6,9 +6,12 @@ function AirportCard(props){
     return(
         <div className="card">
             <h2>{props.title}</h2>
-            <label>Name <p>{props.name}</p></label>
-            <label>ICAO Code <p>{props.icaoCode}</p></label>
-            <label>Coordinates <p>{props.latitude} , {props.longitude}</p></label>
+            <hr />
+            <label>Airport Name <p>{props.airport.name}</p></label>
+            <label>ICAO Code <p>{props.airport.icaoCode}</p></label>
+            <label>Coordinates <p>{props.airport.latitude} , {props.airport.longitude}</p></label>
+            <label>Location <p>{props.airport.country},{props.airport.continent}</p></label>
+            <label>Type <p>{props.airport.size}</p></label>
         </div>
     );
 }
