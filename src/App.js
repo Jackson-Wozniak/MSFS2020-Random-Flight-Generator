@@ -40,7 +40,7 @@ function App() {
       .then(data => {
         data.data.forEach(plane => {
           //map array index from csv to new plane object
-          planes.push(new Plane(plane));;
+          planes.push(new Plane(plane));
         });
         console.log(planes.length);
       })
@@ -56,10 +56,13 @@ function App() {
     if(airports.size <= 1){
       readTextFile();
     }
-    let airportArr = flightParameters.airportChoicesAreNotAny() ? filteredAirports() : airports;
+    let airportArr = flightParameters.airportSize !== -1 ? filteredAirports() : airports;
+
     let airport1 = airportArr[Math.floor(Math.random()*airportArr.length)];
     let airport2 = airportArr[Math.floor(Math.random()*airportArr.length)];
-    let plane = planes[Math.floor(Math.random()*planes.length)];
+
+    let plane = findRandomPlaneByType();
+
     let flight = new Flight(airport1, airport2, plane);
     while(true){
       if(flight.validateFlight(flightParameters)){
@@ -72,18 +75,24 @@ function App() {
     }
   }
 
-  function filteredAirports(){
-    if(flightParameters.airportSize === -1){
-      return airports.filter(airport => airport.continent === flightParameters.continentOfDeparture);
+  function findRandomPlaneByType(){
+    if(flightParameters.planeType === -1){
+      return planes[Math.floor(Math.random()*planes.length)];
     }
-    if(flightParameters.continentOfDeparture === -1){
-      return airports.filter(airport => airport.size === flightParameters.airportSize);
+    while(true){
+      let plane = planes[Math.floor(Math.random()*planes.length)];
+      if(plane.airplaneType.toLowerCase() === flightParameters.planeType.toLowerCase()){
+        return plane;
+      }
     }
+  }
 
-    return airports.filter(function (airport) {
-      return airport.size === flightParameters.airportSize &&
-             airport.continent === flightParameters.continentOfDeparture;
-    });
+  function filteredAirports(){
+    if(flightParameters.airportSize !== -1){
+      return airports.filter(airport => airport.size === flightParameters.airportSize);
+    }else{
+      return airports;
+    }
   }
 
   if(flight == null){
@@ -93,26 +102,24 @@ function App() {
           <h2>Choose Your Flight Parameters</h2>
           <div className="select">
             <select onChange={(e) => flightParameters.maxFlightTime = e.target.value}>
-              <option value="-1">Any Time</option>
+              <option value="-1">Any Duration</option>
               <option value="1">1 Hour</option>
               <option value="3">3 Hours</option>
               <option value="5">5 Hours</option>
             </select>
           </div>
           <div className="select">
-            <select onChange={(e) => flightParameters.continentOfDeparture = e.target.value}>
-              <option value="-1">Any Continent</option>
-              <option value="NA">North America</option>
-              <option value="SA">South America</option>
-              <option value="AF">Africa</option>
-              <option value="AS">Asia</option>
-              <option value="EU">Europe</option>
-              <option value="OC">Oceania</option>
+            <select onChange={(e) => flightParameters.planeType = e.target.value}>
+              <option value="-1">Any Plane Type</option>
+              <option value="propeller">Propeller Planes</option>
+              <option value="jet">Jets</option>
+              <option value="airliner">Airliners</option>
+              <option value="turboprop">TurboProps</option>
             </select>
           </div>
           <div className="select">
-            <select onChange={(e) => flightParameters.airportSize = e.target.value}>
-              <option value="-1">Any Airport</option>
+          <select onChange={(e) => flightParameters.airportSize = e.target.value}>
+              <option value="-1">Any Airport Size</option>
               <option value="large_airport">Large Airports</option>
               <option value="medium_airport">Medium Airports</option>
               <option value="small_airport">Small Airports</option>

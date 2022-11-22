@@ -1,18 +1,14 @@
 export class FlightParameters{
     maxFlightTime;
     maxFlightDistance;
-    continentOfDeparture;
+    planeType;
     airportSize;
 
-    constructor(maxFlightTime, maxFlightDistance, continentOfDeparture, airportSize){
+    constructor(maxFlightTime, maxFlightDistance, planeType, airportSize){
         this.maxFlightTime = maxFlightTime;
         this.maxFlightDistance = maxFlightDistance;
-        this.continentOfDeparture = continentOfDeparture;
+        this.planeType = planeType;
         this.airportSize = airportSize;
-    }
-
-    airportChoicesAreNotAny(){
-        return this.continentOfDeparture !== -1 || this.airportSize !== -1 ? true : false;
     }
 }
 

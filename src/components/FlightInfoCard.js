@@ -12,9 +12,9 @@ function FlightInfoCard(props){
             <h2>Flight Info</h2>
             <hr />
             <label>Distance <p>{formatter.format(props.flight.distance)} miles</p></label>
-            <label>Time <p>{props.flight.formattedTime}</p></label>
+            <label>Duration <p>{props.flight.formattedTime}</p></label>
             <label>Plane<p>{props.flight.plane.name}</p></label>
-            <label>Speed <p>{props.flight.plane.speedInKnots}</p> </label>
+            <label>Speed <p>{props.flight.plane.speedInKnots} knots</p> </label>
         </div>
     );
 }
