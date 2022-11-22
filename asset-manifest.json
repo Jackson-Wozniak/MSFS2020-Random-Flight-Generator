@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/MSFS2020-Random-Flight-Generator/static/css/main.5420d5e1.css",
-    "main.js": "/MSFS2020-Random-Flight-Generator/static/js/main.238e5e6d.js",
+    "main.js": "/MSFS2020-Random-Flight-Generator/static/js/main.38898a8f.js",
     "static/media/background_2.jpg": "/MSFS2020-Random-Flight-Generator/static/media/background_2.3a36a7eceeab90fe7387.jpg",
     "index.html": "/MSFS2020-Random-Flight-Generator/index.html",
     "main.5420d5e1.css.map": "/MSFS2020-Random-Flight-Generator/static/css/main.5420d5e1.css.map",
-    "main.238e5e6d.js.map": "/MSFS2020-Random-Flight-Generator/static/js/main.238e5e6d.js.map"
+    "main.38898a8f.js.map": "/MSFS2020-Random-Flight-Generator/static/js/main.38898a8f.js.map"
   },
   "entrypoints": [
     "static/css/main.5420d5e1.css",
-    "static/js/main.238e5e6d.js"
+    "static/js/main.38898a8f.js"
   ]
 }
